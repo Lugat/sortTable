@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sortTable Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="sortTable-0.2.js"></script>
+    <script>
+      
+      $(function() {
+        
+        $('button').click(function(e) {
+
+          e.preventDefault();
+
+          var $this = $(this),
+              $table = $this.parents('table'),
+              $cols = $table.find('th'),
+              $col = $this.parents('th'),
+              col = $cols.index($col),
+              numeric = $col.data('numeric'),
+              reverse = $this.data('reserve');
+
+          $table.sortTable(col, reverse, numeric);
+
+        });
+        
+      });
+      
+    </script>
+    
+  </head>
+  <body>
+    
+    <div class="container">
+    
+      <table class="table table-striped">
+        <thead>
+
+          <tr>
+            <th>
+              Movie
+              <button class="btn btn-xs btn-link" data-reserve="false"><i class="fa fa-sort-asc"></i></button>
+              <button class="btn btn-xs btn-link" data-reserve="true"><i class="fa fa-sort-desc"></i></button>
+            </th>
+            <th data-numeric="true">
+              Year
+              <button class="btn btn-xs btn-link" data-reserve="false"><i class="fa fa-sort-asc"></i></button>
+              <button class="btn btn-xs btn-link" data-reserve="true"><i class="fa fa-sort-desc"></i></button>
+            </th>
+            <th data-numeric="true">
+              Rating
+              <button class="btn btn-xs btn-link" data-reserve="false"><i class="fa fa-sort-asc"></i></button>
+              <button class="btn btn-xs btn-link" data-reserve="true"><i class="fa fa-sort-desc"></i></button>
+            </th>
+          </tr>
+
+        </thead>
+        <tbody>
+
+          <tr>
+            <td>The Godfather</td>
+            <td>1972</td>
+            <td data-sort="92">9.2/10</td>
+          </tr>
+
+          <tr>
+            <td>The Shawshank Redemption</td>
+            <td>1994</td>
+            <td data-sort="93">9.3/10</td>
+          </tr>
+
+          <tr>
+            <td>Schindlers List</td>
+            <td>1993</td>
+            <td data-sort="89">8.9/10</td>
+          </tr>
+
+          <tr>
+            <td>Raging Bull</td>
+            <td>1980</td>
+            <td data-sort="82">8.2/10</td>
+          </tr>
+
+          <tr>
+            <td>Casablanca</td>
+            <td>1941</td>
+            <td data-sort="84">8.4/10</td>
+          </tr>
+
+        </tbody>
+      </table>
+      
+    </div>
+    
+  </body>
+</html>
